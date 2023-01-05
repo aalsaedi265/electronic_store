@@ -42,4 +42,8 @@ COMMANDS
 2. install sanity clien and image url
 3. canves conffett for canfity when order is there
 4. react hot toast for notifcation
-5. react icons for the icon in project 
+5. react icons for the icon in project
+7. npm i --legacy-peer-deps  => will intall the package in the future when these depenceis become dataed
+
+ 8. npm install -g @sanity/cli => gets the command line working for sanity
+ 9. npm run dev  => starts the server
