@@ -47,3 +47,7 @@ COMMANDS
 
  8. npm install -g @sanity/cli => gets the command line working for sanity
  9. npm run dev  => starts the server
+
+ sandity banner and product are used for CRUD functionality for the database, it more user firendly and funner to update
+
+all can be found in the schema folder in the ecomerce folder of the next.js application
