@@ -1,9 +1,10 @@
 import React from "react"
+import { Product, FooterBanner, HeroBanner } from '../components';
 
 export default function Home() {
   return (
     <>
-     HeroBanner
+     <HeroBanner/>
 
      <div className="products-heading">
       <h2>Beset Selling Products</h2>
@@ -12,7 +13,7 @@ export default function Home() {
      <div className="products-container">
       {['product 1', "proudc2"].map(el => el)}
      </div>
-     FOOTER
+     <FooterBanner/>
     </>
   )
 }

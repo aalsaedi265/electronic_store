@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@babel/core": "^7.20.12",
     "@next/font": "13.1.1",
     "@sanity/client": "^4.0.0",
     "@sanity/image-url": "^1.0.1",
@@ -22,5 +23,8 @@
     "react-hot-toast": "^2.4.0",
     "react-icons": "^4.7.1",
     "stripe": "^11.5.0"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^7.18.6"
   }
 }

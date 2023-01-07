@@ -131,3 +131,53 @@ body, *{
   justify-content: center;
   /*add more css when needed*/
 }
+.banner-container{
+ position: relative;
+ background-color: #dcdcdc;
+ height: 500px;
+ width: 100%;
+ padding: 100px 40px;
+ line-height: 0.9;
+ border-radius: 15px;
+}
+.banner-container .beats{
+  font-size: 20px;
+}
+.banner-container h3{
+  font-size: 4rem;
+  margin-top: 4px;
+}
+.banner-container button{
+  border-radius: 15px;
+  padding: 10px 16px;
+  background-color: #f02d34;
+  color: white;
+  border: none;
+  margin-top: 40px;
+  font-size: 18px;
+  font-weight: 500;
+  cursor: pointer;
+  z-index:10000 !important;
+}
+.descriptoin{
+  position: absolute;
+  right: 10%;
+  bottom: 5%;
+  width: 300px;
+  line-height: 1.3;
+  display: flex;
+  flex-direction: column;
+  color: #324d67;
+}
+
+.descriptoin p{
+  color: #5f5f5f;
+  font-weight: 100;
+text-align: end;
+}
+.descriptoin h5{
+  margin-bottom: 12px;
+  font-weight: 700;
+  font-size: 16px;
+  align-self: flex-end;
+}
