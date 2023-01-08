@@ -1,15 +1,24 @@
 import Link from 'next/link'
 import React from 'react'
-
+ import { urlFor } from '../lib/client'
 
 function HeroBanner({heroBanner}) {
   return (
     <div className='banner-container'>
-        <p className='beats'>small text</p>
-        <h3>mid text</h3>
-        <image src="" alt="headphones"
-            className='hero-banner-image'/>
-            {/* link is an h ref but in next js */}
+
+        <p className='beats'>{heroBanner.smallText}</p>
+        
+        <h3>{heroBanner.midText}</h3>
+        
+        <h1>{heroBanner.largeText1}</h1>
+        
+       
+
+        <img 
+        src={urlFor(heroBanner.image)} 
+        alt="watches" 
+        className="banner-image" />
+          
             <div>
                 <Link
                 href="/Product/ID">
@@ -17,8 +26,9 @@ function HeroBanner({heroBanner}) {
                 </Link>
                 <div className='descriptoin'> 
                     <h5>decride</h5>
-                    <p>description</p>
+                    <p>description</p> 
                 </div>
+            
             </div>
     </div>
   )

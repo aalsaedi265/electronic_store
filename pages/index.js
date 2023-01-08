@@ -9,7 +9,9 @@ const Home =({ products, bannerData})=> (
     {/* banner is an array, so will fill the data in sanity then fetch in the front end
     the addtion it can be seen in sanity's ecomerece folder
     in schemas  in file banner */}
-     <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
+<HeroBanner 
+heroBanner={bannerData.length && bannerData[0]}  
+/>
 
        <div className="products-heading">
       <h2>Beset Selling Products</h2>
@@ -21,14 +23,15 @@ const Home =({ products, bannerData})=> (
      <FooterBanner/>
     </>
 )
-export const getServerSideProps = async ()=>{
-  const query = '*[_type == "product "]'
-  const products = await client.fetch(query)
-  const bannerQuery= '*[_type == "banner"]'
-  const bannerData = await client.fetch(bannerQuery)
+export const getServerSideProps = async () => {
+  const query = '*[_type == "product"]';
+  const products = await client.fetch(query);
+
+  const bannerQuery = '*[_type == "banner"]';
+  const bannerData = await client.fetch(bannerQuery);
 
   return {
-    props: {products, bannerData}
+    props: { products, bannerData }
   }
 }
 

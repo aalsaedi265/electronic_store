@@ -159,6 +159,20 @@ body, *{
   cursor: pointer;
   z-index:10000 !important;
 }
+.banner-container h1{
+  color: white;
+  font-size: 10em;
+  margin-left: -20px;
+  text-transform: uppercase;
+}
+.banner-image{
+  position: absolute;
+  top: 0%;
+  right:10%;
+  width: 450px;
+  height: 450px;
+  
+}
 .descriptoin{
   position: absolute;
   right: 10%;
