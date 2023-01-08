@@ -1,24 +1,27 @@
 import React from "react"
 import { Product, FooterBanner, HeroBanner } from '../components';
 import { client } from '../lib/client';
-import { GetServerSideProps } from "next";
 
-const Home =()=> (
+
+const Home =({ products, bannerData})=> (
   
     <>
-     <HeroBanner/>
+    {/* banner is an array, so will fill the data in sanity then fetch in the front end
+    the addtion it can be seen in sanity's ecomerece folder
+    in schemas  in file banner */}
+     <HeroBanner heroBanner={bannerData.length && bannerData[0]}/>
 
-     <div className="products-heading">
+       <div className="products-heading">
       <h2>Beset Selling Products</h2>
       <p>Speakers of many varation</p>
      </div>
      <div className="products-container">
-      {['product 1', "proudc2"].map(el => el)}
+      {products?.map(el => el.name)}
      </div>
      <FooterBanner/>
     </>
 )
-export const GetServerSideProps= async ()=>{
+export const getServerSideProps = async ()=>{
   const query = '*[_type == "product "]'
   const products = await client.fetch(query)
   const bannerQuery= '*[_type == "banner"]'

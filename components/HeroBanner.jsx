@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React from 'react'
 
 
-function HeroBanner() {
+function HeroBanner({heroBanner}) {
   return (
     <div className='banner-container'>
         <p className='beats'>small text</p>

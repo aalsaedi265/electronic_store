@@ -19,3 +19,14 @@ all can be found in the schema folder in the ecomerce folder of the next.js appl
         projecti in sanity get all the information for the lib/clien varables
 
 11. server side props is what is used in fetch data in next, its the choice over useEffect, beacuse it si supperior.
+
+        done after the closing bracket or perenthese of the main fucntion
+
+                export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
+
