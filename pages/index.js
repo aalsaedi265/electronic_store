@@ -20,7 +20,7 @@ heroBanner={bannerData.length && bannerData[0]}
         <div className="products-container">
           {products?.map(el => <Product key={el.id} product={el}/>)}
         </div>
-     <FooterBanner/>
+     <FooterBanner FooterBanner={bannerData && bannerData[0]}/>
     </>
 )
 export const getServerSideProps = async () => {
