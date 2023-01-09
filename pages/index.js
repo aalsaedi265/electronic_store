@@ -14,12 +14,12 @@ heroBanner={bannerData.length && bannerData[0]}
 />
 
        <div className="products-heading">
-      <h2>Beset Selling Products</h2>
-      <p>Speakers of many varation</p>
-     </div>
-     <div className="products-container">
-      {products?.map(el => el.name)}
-     </div>
+          <h2>TOP Seller</h2>
+          <p>Techno Gadget for you, me, and ALL </p>
+        </div>
+        <div className="products-container">
+          {products?.map(el => <Product key={el.id} product={el}/>)}
+        </div>
      <FooterBanner/>
     </>
 )

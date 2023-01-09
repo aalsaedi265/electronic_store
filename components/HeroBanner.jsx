@@ -21,12 +21,12 @@ function HeroBanner({heroBanner}) {
           
             <div>
                 <Link
-                href="/Product/ID">
-                    <button type="button"> button text</button>                
+                href={`/product/${heroBanner.product}`}>
+                    <button type="button"> {heroBanner.buttonText}</button>                
                 </Link>
                 <div className='descriptoin'> 
-                    <h5>decride</h5>
-                    <p>description</p> 
+                    <h5>You Want </h5>
+                    <p>{heroBanner.desc}</p> 
                 </div>
             
             </div>
