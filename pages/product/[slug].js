@@ -4,7 +4,7 @@ import React from 'react'
 import { client, urlFor } from '../../lib/client';
 import { Product } from '../../components';
 import {
-    AiOutlineMenus,
+    AiOutlineMinus,
      AiOutlinePlus,
       AiFillStar,
        AiOutlineStar} from 'react-icons/ai'
@@ -15,12 +15,63 @@ function productDetails({product, products}) {
     const { image, name, details, price } = product;
 
   return (
-    <div className='product-detail'>
-        <div>
-            <div className='detail-image'>
+    <div >
+        <div className="product-detail-container">
+            <div>
+
+            <div className='image-container'>
                 <img
+                className='product-detail-image'
                 src={urlFor(product.image && product.image[0])}
                 />
+            </div>
+
+            {/* <div className='small-detail-image'>
+                {image?.map((item,i) =>(
+                    <img
+                    src={urlFor(item )}
+                    className=""
+                    onMouseEnter=""
+                    />
+                ))}
+            </div> */}
+            
+            <div className='product-detail-desc'>
+                <h1>{name}</h1>
+                <div className='reviews'>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiFillStar/>
+                    <AiOutlineStar/>
+
+                </div>
+                <p>20</p>
+                <h4>Details:</h4>
+                <p>{details}</p>
+                <p className='price'>${price}</p>
+                
+                <div className='quantity'>
+                    <h3>Quantity</h3>
+                    <p className='quantity-desc'>
+                        <span className='minus'
+                        onClick=""
+                        >
+                         <AiOutlineMinus/>
+                        </span>
+                        <span className='num'
+                        onClick=""
+                        >
+                         0
+                        </span>
+                        <span className='plus'
+                        onClick=""
+                        >
+                         <AiOutlinePlus/>
+                        </span>
+                    </p>
+                </div>
+            </div>
             </div>
         </div>
         </div>
