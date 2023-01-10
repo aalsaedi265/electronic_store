@@ -238,3 +238,28 @@ height: 18px;
   display: flex;
   gap:10px;
 }
+.product-detail{
+display: flex;
+justify-content: center;
+flex-wrap: wrap; gap: 40px;
+ margin: 40px;
+ margin-top: 60px;
+ margin-left:0px;
+ color: #324d67;
+}
+
+.detail-image img{
+  width: 350px;
+  height: 350px;
+}
+.detail-image{
+  border-radius: 15px;
+  height:400px;
+  width: 400px;
+  background-color: #ebebeb;
+  cursor: pointer;
+  transition: .3s ease-in-out;
+}
+.detail-image:hover{
+  background-color: #f02d34;
+}

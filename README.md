@@ -30,3 +30,8 @@ all can be found in the schema folder in the ecomerce folder of the next.js appl
   // Pass data to the page via props
   return { props: { data } }
 
+file routing allow us to be pass the need for react router.
+each image has a slug, by using [] and the key in the object of there data, for the file in the pages in a folder called after whaty they are products I was able to make a quck pager for reach.
+
+
+get statick is used to fetch specific data while server side obtains all the data

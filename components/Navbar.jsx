@@ -7,12 +7,12 @@ const Navbar = () => {
   return (
     <div className='navbar'>
         <p className='logo'>
-            <Link href='/' >JSM headPhones</Link>
+            <Link href='/' >STUD Electronics</Link>
         </p>
         <button
         type='button'
         className='cart-icon'
-        onclick=""
+        // onClick=""
         >
             <AiOutlineShopping/>
             <span className='cart-item-qty'>
