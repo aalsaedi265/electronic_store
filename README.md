@@ -35,3 +35,6 @@ each image has a slug, by using [] and the key in the object of there data, for 
 
 
 get statick is used to fetch specific data while server side obtains all the data
+
+
+In the context folder I am going to put my hooks and mage the whole state compentesn throug project

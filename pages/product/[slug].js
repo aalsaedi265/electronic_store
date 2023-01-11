@@ -9,31 +9,28 @@ import { Product } from '../../components';
 
 const ProductDetails = ({ product, products }) => {
   const { image, name, details, price } = product;
-//   const [index, setIndex] = useState(0);
+  const [index, setIndex] = useState(0);
 //   const { decQty, incQty, qty, onAdd, setShowCart } = useStateContext();
 
-  const handleBuyNow = () => {
-    onAdd(product, qty);
-
-    setShowCart(true);
-  }
+ 
 
   return (
     <div>
       <div className="product-detail-container">
         <div>
           <div className="image-container">
-            <img src={urlFor(product.image && product.image[0])} className="product-detail-image" />
+            <img src={urlFor(product.image && product.image[index])} 
+            className="product-detail-image" />
           </div>
           <div className="small-images-container">
-            {/* {image?.map((item, i) => (
+            {image?.map((item, i) => (
               <img 
                 key={i}
                 src={urlFor(item)}
                 className={i === index ? 'small-image selected-image' : 'small-image'}
                 onMouseEnter={() => setIndex(i)}
               />
-            ))} */}
+            ))}
           </div>
         </div>
 
@@ -58,7 +55,7 @@ const ProductDetails = ({ product, products }) => {
             <h3>Quantity:</h3>
             <p className="quantity-desc">
               <span className="minus" onClick=''><AiOutlineMinus /></span>
-              <span className="num">9001</span>
+              <span className="num">0</span>
               <span className="plus" onClick=''><AiOutlinePlus /></span>
             </p>
           </div>
