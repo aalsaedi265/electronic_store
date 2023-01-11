@@ -4,9 +4,9 @@ import React from 'react'
 
 function HeroBanner({heroBanner}) {
   return (
-    <div className='banner-container'>
+    <div className='hero-banner-container'>
 
-        <p className='beats'>{heroBanner.smallText}</p>
+        <p className='beats-solo'>{heroBanner.smallText}</p>
         
         <h3>{heroBanner.midText}</h3>
         
@@ -17,14 +17,14 @@ function HeroBanner({heroBanner}) {
         <img 
         src={urlFor(heroBanner.image)} 
         alt="watches" 
-        className="banner-image" />
+        className="hero-banner-image" />
           
             <div>
                 <Link
                 href={`/product/${heroBanner.product}`}>
                     <button type="button"> {heroBanner.buttonText}</button>                
                 </Link>
-                <div className='descriptoin'> 
+                <div className='desc'> 
                     <h5>You Want </h5>
                     <p>{heroBanner.desc}</p> 
                 </div>
