@@ -9,7 +9,7 @@ const Context =createContext()
 export const StateContext = ({children})=>{
     
     const [showCart,setShowCart] = useState(false)
-    const [cartItem, setCartItem] = useState()
+    const [cartItem, setCartItem] = useState([])
     const [totalPrice, setTotalPrice] =useState()
     const [ totalQuantities, setTotalQuantities]= useState()
     const [qty, setQty] = useState(1)
@@ -19,16 +19,24 @@ export const StateContext = ({children})=>{
           //checks if item is already inteh cart
         const checkInCart= cartItem.find(el => el._id === product._id)
 
-        if(checkProductType){
-            setTotalPrice((prevTotal) => prevTotal + product.price *quantity)
-            setTotalQuantities(prevQuantities => prevQuantities + quantity )
+        setTotalPrice((prevTotal) => prevTotal + product.price *quantity)
+        setTotalQuantities(prevQuantities => prevQuantities + quantity )
 
+        if(checkInCart){
+        
             const cartUpdateItem= cartItem.map(el => {
                 if(el._id== product._id) return{
                     ...el, quantity: el.quantity + quantity
                 }
             })
+            setCartItem(cartUpdateItem)
+           
+        }else{
+            product.quantity = quantity
+            setCartItem([...cartItem,{...product}])
         }
+         //makes cute success messagge
+         toast.success(`${qty}${product.name} another one`)
     }
 
     const incQty =()=>{
@@ -44,7 +52,8 @@ export const StateContext = ({children})=>{
         <Context.Provider
         value={{
             showCart, cartItem, totalPrice,
-            qty, totalQuantities, decQty, incQty
+            qty, totalQuantities, decQty, incQty,
+            onAdd
         }}>
 
             {children}
