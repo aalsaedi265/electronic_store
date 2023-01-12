@@ -14,9 +14,21 @@ export const StateContext = ({children})=>{
     const [ totalQuantities, setTotalQuantities]= useState()
     const [qty, setQty] = useState(1)
     
-    //checks if item is already inteh cart
+  
     const onAdd = (product, quantity)=>{
+          //checks if item is already inteh cart
         const checkInCart= cartItem.find(el => el._id === product._id)
+
+        if(checkProductType){
+            setTotalPrice((prevTotal) => prevTotal + product.price *quantity)
+            setTotalQuantities(prevQuantities => prevQuantities + quantity )
+
+            const cartUpdateItem= cartItem.map(el => {
+                if(el._id== product._id) return{
+                    ...el, quantity: el.quantity + quantity
+                }
+            })
+        }
     }
 
     const incQty =()=>{
