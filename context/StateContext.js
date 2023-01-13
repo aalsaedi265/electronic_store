@@ -11,7 +11,7 @@ export const StateContext = ({children})=>{
     const [showCart,setShowCart] = useState(false)
     const [cartItem, setCartItem] = useState([])
     const [totalPrice, setTotalPrice] =useState()
-    const [ totalQuantities, setTotalQuantities]= useState()
+    const [ totalQuantities, setTotalQuantities]= useState(0)
     const [qty, setQty] = useState(1)
     
   
@@ -36,7 +36,7 @@ export const StateContext = ({children})=>{
             setCartItem([...cartItem,{...product}])
         }
          //makes cute success messagge
-         toast.success(`${qty}${product.name} another one`)
+         toast.success(`${qty} ${product.name} another one`)
     }
 
     const incQty =()=>{
@@ -53,7 +53,7 @@ export const StateContext = ({children})=>{
         value={{
             showCart, cartItem, totalPrice,
             qty, totalQuantities, decQty, incQty,
-            onAdd
+            onAdd, setShowCart
         }}>
 
             {children}
