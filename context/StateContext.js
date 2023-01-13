@@ -14,6 +14,8 @@ export const StateContext = ({children})=>{
     const [ totalQuantities, setTotalQuantities]= useState(0)
     const [qty, setQty] = useState(1)
     
+    let foundProudct
+    let index
   
     const onAdd = (product, quantity)=>{
           //checks if item is already inteh cart
@@ -38,6 +40,24 @@ export const StateContext = ({children})=>{
          //makes cute success messagge
          toast.success(`${qty} ${product.name} another one`)
     }
+
+    const toggleCartItemQuantity =(id,val)=>{
+        foundProudct= cartitem.find((item)=> item._id === id)
+        index = carItems.find(prod => prod._id == id)
+        const newCartItem = cartItem.filter(el => el._id !== el)
+
+        if(val === 'inc'){
+            let newCartItem= [...cartItem,{...product,
+            quantity:product.quantity+1}]
+
+            setCartItem(newCartItem)
+
+            setTotalPrice((prevTotal)=> prevTotal+ foundProudct.price)
+        }else if( val ==='dec'){
+            
+        }
+    }
+
 
     const incQty =()=>{
         setQty((prev) => prev+1)
