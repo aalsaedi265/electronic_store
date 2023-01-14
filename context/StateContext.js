@@ -14,7 +14,7 @@ export const StateContext = ({children})=>{
     const [ totalQuantities, setTotalQuantities]= useState(0)
     const [qty, setQty] = useState(1)
     
-    let foundProudct
+    let foundProduct
     let index
   
     const onAdd = (product, quantity)=>{
@@ -42,19 +42,22 @@ export const StateContext = ({children})=>{
     }
 
     const toggleCartItemQuantity =(id,val)=>{
-        foundProudct= cartitem.find((item)=> item._id === id)
-        index = carItems.find(prod => prod._id == id)
-        const newCartItem = cartItem.filter(el => el._id !== el)
+       
+        foundProduct = cartItem.find((item) => item._id === id)
+        index = cartItem.findIndex((product) => product._id === id);
+        const newCartItems = cartItem.filter((item) => item._id !== id)
 
         if(val === 'inc'){
-            let newCartItem= [...cartItem,{...product,
-            quantity:product.quantity+1}]
-
-            setCartItem(newCartItem)
-
-            setTotalPrice((prevTotal)=> prevTotal+ foundProudct.price)
-        }else if( val ==='dec'){
             
+            setCartItem([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity + 1 } ]);
+            setTotalPrice((prevTotalPrice) => prevTotalPrice + foundProduct.price)
+            setTotalQuantities(prevTotalQuantities => prevTotalQuantities + 1)
+
+        }else if( val ==='dec' && foundProduct.quantity > 1){
+
+            setCartItem([...newCartItems, { ...foundProduct, quantity: foundProduct.quantity - 1 } ]);
+            setTotalPrice((prevTotalPrice) => prevTotalPrice - foundProduct.price)
+            setTotalQuantities(prevTotalQuantities => prevTotalQuantities - 1)
         }
     }
 
@@ -73,7 +76,7 @@ export const StateContext = ({children})=>{
         value={{
             showCart, cartItem, totalPrice,
             qty, totalQuantities, decQty, incQty,
-            onAdd, setShowCart
+            onAdd, setShowCart, toggleCartItemQuantity
         }}>
 
             {children}

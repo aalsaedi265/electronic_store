@@ -13,7 +13,9 @@ import { getItemDescriptor } from '@babel/core/lib/config/item';
 function Cart() {
 
   const cartRef= useRef()
-  const {totalPrice, totalQuantities, cartItem, setShowCart}= useStateContext()
+  const { totalPrice, totalQuantities,
+          cartItem, setShowCart,
+          toggleCartItemQuantity}= useStateContext()
 
 
   return (
@@ -59,9 +61,9 @@ function Cart() {
                   <div className='flex bottom'>
                       <div>
                         <p className='quantity-desc'>
-                          <span className="minus" onClick=""><AiOutlineMinus /></span>
-                          <span className="num">0</span>
-                          <span className="plus" onClick=""><AiOutlinePlus /></span>
+                          <span className="minus" onClick={()=> toggleCartItemQuantity(stuff._id,'dec')}><AiOutlineMinus /></span>
+                          <span className="num">{stuff.quantity}</span>
+                          <span className="plus" onClick={(()=> toggleCartItemQuantity(stuff._id, 'inc'))}><AiOutlinePlus /></span>
                         </p>
                       </div>
 
