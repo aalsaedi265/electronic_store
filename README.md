@@ -38,3 +38,6 @@ get statick is used to fetch specific data while server side obtains all the dat
 
 
 In the context folder I am going to put my hooks and mage the whole state compentesn throug project
+
+NEXT  API folder allow for the using server side and local storage.
+        this eleminates the use of express and node
