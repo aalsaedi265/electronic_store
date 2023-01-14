@@ -7,7 +7,7 @@ import toast from 'react-hot-toast'
 import { useStateContext } from '../context/StateContext';
 import { urlFor } from '../lib/client';
 import { getItemDescriptor } from '@babel/core/lib/config/item';
-
+import getStripe from '../lib/getStripe';
 
 
 function Cart() {
@@ -16,6 +16,25 @@ function Cart() {
   const { totalPrice, totalQuantities,
           cartItem, setShowCart,
           toggleCartItemQuantity}= useStateContext()
+
+
+  const handleCheckout= async ()=>{
+    const stripe= await getStripe();
+
+    const response = await fetch('/api/stripe',{
+      method: 'POST',
+      headers:{
+        'Content-Type':"application/json"
+      },
+      body: JSON.stringify(cartItem )
+    })
+    if(response.statusCode ===500) return
+
+    const data =await response.json()
+    toast.loading('Redirecting...')
+
+    stripe.redirectToCheckout({session: data.id}) //instance of a prucharce stored  in back ned
+  }
 
 
   return (
@@ -89,7 +108,7 @@ function Cart() {
               <button
               type='button'
               className='btn'
-              onClick=""
+              onClick={handleCheckout}
               >
                 Stripe Payment
               </button>

@@ -1,4 +1,5 @@
 
+import { getItemDescriptor } from "@babel/core/lib/config/item";
 import Stripe from "stripe";
 
 
@@ -17,7 +18,7 @@ import Stripe from "stripe";
 
 // i will be using a prebuilt chekcout page from strip, above was my attempt
 
-const stripe = require('stripe')(process.env.STRIPE_SECRET_KEY);
+const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
 export default async function handler(req, res) {
   if (req.method === 'POST') {
@@ -28,21 +29,34 @@ export default async function handler(req, res) {
             payment_method_types:['card'],
             billing_address_collection:'auto',
             shipping_options:[{shipping_rate:'shr_1MQAGsHCgzaQFbfzqaWCvm6i',
-                               shipping_rate:'shr_1MQAKSHCgzaQFbfz9dztWQsg'}],
-            line_items: [
-              {
-                // Provide the exact Price ID (for example, pr_1234) of the product you want to sell
-                price: '{{PRICE_ID}}',
-                quantity: 1,
-              },
-            ],
-            mode: 'payment',
+                               shipping_rate:'shr_1MQAKSHCgzaQFbfz9dztWQsg'}
+                            ],
+            line_items: req.body.cartItem.map(el =>{
+                const img = el.image[0].asset._ref
+                const newImg= img.replace('image-', 'https://cdn.sanity.io/images/z1k08kn4/production').replace('-webp', ".webp")
+
+                return {
+                    price_data: { 
+                        currency: 'usd',
+                        product_data: { 
+                          name: el.name,
+                          images: [newImg],
+                        },
+                        unit_amount: el.price * 100,
+                      },
+                      adjustable_quantity: {
+                        enabled:true,
+                        minimum: 1,
+                      },
+                      quantity: el.quantity
+                    }
+            }),       
             success_url: `${req.headers.origin}/?success=true`,
             cancel_url: `${req.headers.origin}/?canceled=true`,
           }
       // Create Checkout Sessions from body params.
       const session = await stripe.checkout.sessions.create(params);
-      res.redirect(303, session.url);
+      res.status(200).json(session);
     } catch (err) {
       res.status(err.statusCode || 500).json(err.message);
     }
