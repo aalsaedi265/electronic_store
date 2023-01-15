@@ -10,7 +10,7 @@ import getStripe from '../lib/getStripe';
 
 const Cart = () => {
   const cartRef = useRef();
-  const { totalPrice, totalQuantities, cartItem, setShowCart, toggleCartItemQuantity, onRemove } = useStateContext();
+  const { totalPrice, totalQuantities, cartItem, setShowCart, toggleCartItemQuantity, onRemove} = useStateContext();
 
           
       
@@ -62,7 +62,7 @@ const Cart = () => {
           </div>
          )}
          <div className='product-container'>
-          {cartItem.length >=1 && cartItem.map((stuff,idx)=>(
+          {cartItem.length >=1 && cartItem.map((stuff)=>(
             
             <div className='product' key={stuff._id}>
               <img 
@@ -86,7 +86,7 @@ const Cart = () => {
 
                       <button type="button"
                       className='remove-item'
-                      onClick=""
+                      onClick={()=> onRemove(stuff)}
                       >
                         <TiDeleteOutline/>
                       </button>
