@@ -41,3 +41,9 @@ In the context folder I am going to put my hooks and mage the whole state compen
 
 NEXT  API folder allow for the using server side and local storage.
         this eleminates the use of express and node
+
+
+
+stripe demo card
+
+keep entering 42 for number date and cv
