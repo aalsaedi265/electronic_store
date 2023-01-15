@@ -17,7 +17,9 @@ import Stripe from "stripe";
 
 // i will be using a prebuilt chekcout page from strip, above was my attempt
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
+let sk = process.env.STRIPE_SECRET_KEY
+
+const stripe = new Stripe(sk);
 
 export default async function handler(req, res) {
     if (req.method === 'POST') {
