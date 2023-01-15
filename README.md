@@ -47,3 +47,6 @@ NEXT  API folder allow for the using server side and local storage.
 stripe demo card
 
 keep entering 42 for number date and cv
+
+
+USe vercel to deploy with git hub repo, be use to add all env varbles
